@@ -20,9 +20,10 @@ size_t distance(const char* restrict a, const char* restrict b, size_t L)
 {
   size_t diff=0;
   for (size_t i=0; i < L; i++) {
-    if (a[i] != b[i] && a[i] != IGNORE_CHAR && b[i] != IGNORE_CHAR) {
-      diff++;
-    }
+      if(a[i] == IGNORE_CHAR || b[i] == IGNORE_CHAR)
+          diff += 3;
+      else if(a[i] != b[i])
+          diff += 4;
   }
   return diff;
 }
